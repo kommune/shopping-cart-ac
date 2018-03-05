@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
   devise_for :admins
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  
+  resources :users do
+    get 'cart', on: :collection
+    get 'payment', on: :collection
+  end
+
+  resources :admin
 end
