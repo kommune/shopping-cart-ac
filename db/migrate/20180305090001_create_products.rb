@@ -4,9 +4,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.string :name, null: false
       t.float :price, null: false
       t.text :description
-      t.string :image
-      #Image to be uploaded by another gem later on.
-
+      t.string :filestack_url, default: ""
       t.timestamps
     end
   end

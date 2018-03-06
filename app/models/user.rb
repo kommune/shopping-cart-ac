@@ -10,4 +10,8 @@ class User < ApplicationRecord
   validates :billing_address, presence: true
   validates :contact_number, presence: true
   
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+  
 end
