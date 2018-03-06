@@ -8,11 +8,15 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :users, only: [:index, :destroy] do
+    root "admin/products#index"
+    resources :categories do
       resources :products
     end
   end
   
-  resources :products
+  resources :categories do
+    resources :products
+  end
 
+  root "users#index"
 end
