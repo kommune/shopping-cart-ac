@@ -5,5 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :orders, dependent: :destroy
+
+  validates :shipping_address, presence: true
+  validates :billing_address, presence: true
+  validates :contact_number, presence: true
   
 end
