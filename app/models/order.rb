@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
 
-  validates :order_number, presence: true, unique: true
+  validates :order_number, presence: true, uniqueness: true
   validates :ship_to, presence: true
   validates :order_total, presence: true
   validates :view_order, presence: true
