@@ -7,5 +7,12 @@ Rails.application.routes.draw do
     get 'payment', on: :collection
   end
 
-  resources :admin
+  namespace :admin do
+    resources :users, only: [:index, :destroy] do
+      resources :products
+    end
+  end
+  
+  resources :products
+
 end
