@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   devise_for :admins, path: 'admins', controllers: { sessions: "admins/sessions" }
   
   resources :users do
+    get 'home', on: :collection
     get 'cart', on: :collection
     get 'payment', on: :collection
   end
+  
+  root "users#home"
 
   namespace :admin do
     root "admin/products#index"
@@ -18,5 +21,4 @@ Rails.application.routes.draw do
     resources :products
   end
 
-  root "users#index"
 end
