@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180305090029) do
+ActiveRecord::Schema.define(version: 20180305093716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20180305090029) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.string "item", null: false
+    t.float "subtotal", null: false
+    t.integer "quantity", default: 1, null: false
+    t.float "total", null: false
+    t.float "gst", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -48,6 +58,27 @@ ActiveRecord::Schema.define(version: 20180305090029) do
     t.index ["product_id"], name: "index_categories_products_on_product_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "order_number", null: false
+    t.string "ship_to", null: false
+    t.float "order_total", null: false
+    t.string "view_order", null: false
+    t.integer "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_number"], name: "index_orders_on_order_number", unique: true
+  end
+
+  create_table "orders_products", force: :cascade do |t|
+    t.bigint "orders_id"
+    t.bigint "products_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["orders_id", "products_id"], name: "index_orders_products_on_orders_id_and_products_id", unique: true
+    t.index ["orders_id"], name: "index_orders_products_on_orders_id"
+    t.index ["products_id"], name: "index_orders_products_on_products_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
     t.float "price", null: false
@@ -57,9 +88,18 @@ ActiveRecord::Schema.define(version: 20180305090029) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "transactions", force: :cascade do |t|
+    t.integer "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "shipping_address", default: "", null: false
+    t.string "billing_address", default: "", null: false
+    t.string "contact_number", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -76,4 +116,6 @@ ActiveRecord::Schema.define(version: 20180305090029) do
 
   add_foreign_key "categories_products", "categories"
   add_foreign_key "categories_products", "products"
+  add_foreign_key "orders_products", "orders", column: "orders_id"
+  add_foreign_key "orders_products", "products", column: "products_id"
 end
