@@ -1,11 +1,14 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!, except: [:home]
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :cart]
 
   def home
   end
   
+  def cart
+  end
+
   def index
     @user = current_user
   end
