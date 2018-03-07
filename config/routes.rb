@@ -17,8 +17,8 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :categories do
-    resources :products do
+  resources :categories, only: [:index, :show] do
+    resources :products, only: [:index, :show] do
       put "add_to_cart", on: :member
       put "remove_from_cart", on: :member
     end

@@ -11,7 +11,7 @@
 
   <body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="users#home">BOBBY!</a>
+    <%= link_to 'BOBBY!', root_path, {:class=>"navbar-brand"} %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -25,8 +25,8 @@
             <div class="row">
               <div class="col-6 align-content-center">
                 <strong><p>Trending</p></strong>
-                <a class="dropdown-item" href="#">New Arrivals</a>
-                <a class="dropdown-item" href="#">Bestsellers</a>
+                <%= link_to 'New Arrivals', category_path(@category.id), {:class=>"dropdown-item"} %>
+                <%= link_to 'Bestsellers', category_path(@category.id), {:class=>"dropdown-item"} %>
               </div>
               <div class="col-6 align-content-center">
                 <strong><p>Categories</p></strong>
@@ -57,10 +57,11 @@
   </div>
   <ul class="nav justify-content-end">
     <li class="nav-item">
-      <a class="dropdown-item" href="users/sessions#new">SIGN IN</a>
+      <%= link_to 'SIGN IN', new_user_session_path, {:class=>"dropdown-item"} %>
     </li>
     <li class="nav-item">
-      <a class="dropdown-item" href="users#cart">CART</a>
+      <%= link_to 'CART', new_user_session_path, {:class=>"dropdown-item"} %>
+    </li>
   </ul>
 </nav>
     <%= yield %>
