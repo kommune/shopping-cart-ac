@@ -1,4 +1,3 @@
-
 Admin.create!(email: "admin@example.com", password: "123123")
 puts "Default admin created!"
 
@@ -17,4 +16,3 @@ Category.create!(name: 3)
 Category.create!(name: 4)
 Category.create!(name: 5)
 puts "4 categories created!"
-

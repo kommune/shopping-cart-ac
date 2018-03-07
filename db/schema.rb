@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20180305093716) do
   end
 
   create_table "categories", force: :cascade do |t|
-    t.string "name", null: false
+    t.integer "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20180305093716) do
     t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["order_number"], name: "index_orders_on_order_number", unique: true
   end
 
   create_table "orders_products", force: :cascade do |t|
@@ -82,7 +83,7 @@ ActiveRecord::Schema.define(version: 20180305093716) do
     t.string "name", null: false
     t.float "price", null: false
     t.text "description"
-    t.string "image"
+    t.string "filestack_url", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -94,6 +95,8 @@ ActiveRecord::Schema.define(version: 20180305093716) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "shipping_address", default: "", null: false
