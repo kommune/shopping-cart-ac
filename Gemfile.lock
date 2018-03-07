@@ -220,10 +220,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.6)
       execjs (>= 0.3.0, < 3)
-<<<<<<< HEAD
     unicode-display_width (1.3.0)
-=======
->>>>>>> bf2ba800f80dee7f4d1a6dff8ec950963cee36d5
     unirest (1.1.2)
       addressable (~> 2.3.5)
       json (~> 1.8.1)
