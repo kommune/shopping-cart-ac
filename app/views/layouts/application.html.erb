@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
+    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet"> 
   </head>
 
   <body>
@@ -21,27 +21,47 @@
       <div class="dropdown">
         <button class="dropbtn">SHOP</button>
         <div class="dropdown-content">
-          <strong><p>Categories</p></strong>
-          <a class="dropdown-item" href="#">Rings</a>
-          <a class="dropdown-item" href="#">Necklaces</a>
-          <a class="dropdown-item" href="#">Earrings</a>
-          <a class="dropdown-item" href="#">Bracelets</a>
+          <div class="container d-flex justify-content-left">
+            <div class="row">
+              <div class="col-6 align-content-center">
+                <strong><p>Trending</p></strong>
+                <a class="dropdown-item" href="#">New Arrivals</a>
+                <a class="dropdown-item" href="#">Bestsellers</a>
+              </div>
+              <div class="col-6 align-content-center">
+                <strong><p>Categories</p></strong>
+                <a class="dropdown-item" href="#">Rings</a>
+                <a class="dropdown-item" href="#">Necklaces</a>
+                <a class="dropdown-item" href="#">Earrings</a>
+                <a class="dropdown-item" href="#">Bracelets</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="dropdown">
         <button class="dropbtn">ABOUT</button>
         <div class="dropdown-content">
-          <a class="dropdown-item" href="#">About Us</a>
-          <a class="dropdown-item" href="#">The Process</a>
-          <a class="dropdown-item" href="#">Materials & Care</a>
+          <div class="container d-flex justify-content-left">
+            <div class="row">
+              <div class="col-3 align-content-center">
+                <a class="dropdown-item" href="#">About Us</a>
+                <a class="dropdown-item" href="#">The Process</a>
+                <a class="dropdown-item" href="#">Materials & Care</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </ul>
-    <span class="navbar-text">
-      <a class="dropdown-item" href="#">Sign In</a>
-      <a class="dropdown-item" href="#">Cart</a>
-    </span>
   </div>
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <a class="dropdown-item" href="#">Sign In</a>
+    </li>
+    <li class="nav-item">
+      <a class="dropdown-item" href="#">Cart</a>
+  </ul>
 </nav>
     <%= yield %>
   
