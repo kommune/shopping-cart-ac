@@ -18,7 +18,10 @@ Rails.application.routes.draw do
   end
   
   resources :categories do
-    resources :products
+    resources :products do
+      put "add_to_cart", on: :member
+      put "remove_from_cart", on: :member
+    end
   end
 
 end
