@@ -4,7 +4,7 @@
       <h1>Products</h1>
       <br>
       <div>
-        <%= link_to 'New Product', new_admin_category_product_path, class: "btn btn-info" %>
+        <%= link_to 'New Product', new_admin_creation_path, class: "btn btn-info" %>
       </div>
       <br>
       <table class="table table-hover">
@@ -22,11 +22,11 @@
             <td><%= product.name %></td>
             <td><%= product.price %></td>
             <td><%= product.description %></td>
-            <td><%= filestack_image product.filepicker_url, transform: filestack_transform.resize(width:100, height:100) %></td>
+            <td><%= filestack_image product.filestack_url, transform: filestack_transform.resize(width:100, height:100) %></td>
             <td>
-              <%= link_to 'Show', admin_category_product_path(product) %>
-              <%= link_to 'Edit', edit_admin_product_path(product) %>
-              <%= link_to 'Delete', admin_product_path(product), method: :delete, data: {confirm:"Are you sure?"} %>
+              <%= link_to 'Show', admin_category_product_path(product.categories, product) %>
+              <%= link_to 'Edit', edit_admin_category_product_path(product.categories, product) %>
+              <%= link_to 'Delete', admin_category_product_path(product.categories, product), method: :delete, data: {confirm:"Are you sure?"} %>
             </td>
           </tr>
           <% end %>

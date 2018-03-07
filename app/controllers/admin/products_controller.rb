@@ -8,21 +8,6 @@ class Admin::ProductsController < ApplicationController
     @products = Product.all
   end
 
-  def new
-    @product = Product.new
-  end
-
-  def create
-    @product = Product.new(product_params)
-    if @product.save
-      flash[:notice] = "Product was successfully created"
-      redirect_to admin_products_path
-    else
-      flash.now[:alert] = "Product creation was unsuccessful"
-      render :new
-    end
-  end
-
   def show
     
   end
@@ -45,24 +30,6 @@ class Admin::ProductsController < ApplicationController
     @product.destroy
     flash[:alert] = "Product was deleted"
     redirect_to admin_products_path
-  end
-
-  def add_to_cart
-    $redis.hincrby current_user.id, params[:id], 1
-    redirect_to categories_path
-    flash[:notice] = "Product added to cart!"
-  end
-
-  def remove_from_cart
-    if ($redis.hget current_user.id, params[:id]).to_i > 0
-      $redis.hincrby current_user.id, params[:id], -1
-      redirect_to categories_path
-      flash.now[:alert] = "Product removed"
-    else
-      $redis.hdel current_user.id, params[:id]
-      redirect_to categories_path
-      flash.now[:alert] = "No such product in cart"
-    end
   end
 
   private
