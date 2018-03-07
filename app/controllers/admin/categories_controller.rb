@@ -4,6 +4,7 @@ class Admin::CategoriesController < ApplicationController
 
   before_action :authenticate_admin!
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:index, :show, :edit, :update, :destroy]
 
   def index
     @categories = Category.all
@@ -61,6 +62,10 @@ class Admin::CategoriesController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :price, :description, :filestack_url)
+  end
+
+  def set_product
+    @product = Product.find(params[:id])
   end
 
 end
