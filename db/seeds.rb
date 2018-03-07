@@ -16,3 +16,8 @@ Category.create!(name: 3)
 Category.create!(name: 4)
 Category.create!(name: 5)
 puts "4 categories created!"
+
+CategoriesProduct.create!(product: Product.first, category: Category.first)
+CategoriesProduct.create!(product: Product.second, category: Category.third)
+CategoriesProduct.create!(product: Product.third, category: Category.fourth)
+puts "Category-Product association created!"

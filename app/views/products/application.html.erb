@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bobby!</title>
+    <%= csrf_meta_tags %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+  </head>
+
+  <body>
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Bobby!</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <div class="dropdown">
+        <button class="dropbtn">SHOP</button>
+        <div class="dropdown-content">
+          <strong><p>Categories</p></strong>
+          <a class="dropdown-item" href="#">Rings</a>
+          <a class="dropdown-item" href="#">Necklaces</a>
+          <a class="dropdown-item" href="#">Earrings</a>
+          <a class="dropdown-item" href="#">Bracelets</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">ABOUT</button>
+        <div class="dropdown-content">
+          <a class="dropdown-item" href="#">About Us</a>
+          <a class="dropdown-item" href="#">The Process</a>
+          <a class="dropdown-item" href="#">Materials & Care</a>
+        </div>
+      </div>
+    </ul>
+    <span class="navbar-text">
+      <a class="dropdown-item" href="#">Sign In</a>
+      <a class="dropdown-item" href="#">Cart</a>
+    </span>
+  </div>
+</nav>
+    <%= yield %>
+  
+    <%= filestack_js_include_tag %>
+    <%= filestack_js_init_tag %> 
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  </body>
+</html>
