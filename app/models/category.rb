@@ -5,4 +5,6 @@ class Category < ApplicationRecord
 
   validates :name, presence: true
 
+  enum status: [:new_arrivals, :best_sellers, :rings, :necklaces, :earrings, :bracelets]
+
 end

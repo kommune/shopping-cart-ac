@@ -8,7 +8,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+<<<<<<< Updated upstream
     root "admin/products#index"
+=======
+    root "categories#index"
+>>>>>>> Stashed changes
     resources :categories do
       resources :products
     end
