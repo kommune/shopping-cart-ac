@@ -5,4 +5,6 @@ class Category < ApplicationRecord
 
   enum status: [:rings, :necklaces, :earrings, :bracelets]
 
+  enum status: [:new_arrivals, :best_sellers, :rings, :necklaces, :earrings, :bracelets]
+
 end
