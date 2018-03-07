@@ -18,4 +18,10 @@
   <%= filestack_image @product.filestack_url, transform: filestack_transform.resize(width:100, height:100) %>
 </p>
 
+<%= link_to 'Add To Cart', add_to_cart_product_path(product), method: :put %></td>
+  <% if ($redis.hget current_user.id, product.id).to_i > 0 %>
+    <td><%= link_to 'Remove From Cart', remove_from_cart_product_path(product), method: :put %></td>
+  <% else %>
+    <td></td>
+  <% end %>
 <%= link_to 'Back', categories_path %>

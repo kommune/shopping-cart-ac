@@ -1,12 +1,22 @@
 class CategoriesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
+    @categories = Category.all
+    @products = Product.all
+    @category = Category.find(params[:id])
   end
 
   def show
+    @category = Category.find(params[:id])
+    @product = Product.find(params[:id])
   end
 
-  def new
+  private
+
+  def product_params
+    params.require(:product).permit(:name, :price, :description, :filestack_url)
   end
 
 end

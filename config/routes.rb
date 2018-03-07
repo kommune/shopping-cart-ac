@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   
   resources :users do
     get 'home', on: :collection
-    get 'cart', on: :collection
-    get 'payment', on: :collection
+    get 'cart', on: :member
+    get 'payment', on: :member
   end
   
   root "users#home"
