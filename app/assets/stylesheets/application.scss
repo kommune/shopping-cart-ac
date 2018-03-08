@@ -87,11 +87,15 @@ a {
 }
 
 /* About us page */
-
 .card-img-overlay {
   margin-top: 30vh;
   font-family: 'Lato', sans-serif;
+  font-size: 1.2rem;
   text-align: center;
   color: #686a6d;
-  height:100vh;
+}
+
+.card.about-us img {
+  width:100%;
+  height: 100vh;
 }

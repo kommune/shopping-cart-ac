@@ -1,3 +1,37 @@
-// Place all the styles related to the Categories controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* categories index (new arrivals) page */
+
+.arrival h5 {
+  font-weight: 900;
+}
+
+.bestsellers h5 {
+  font-weight: 900;
+}
+
+#new-arrivals {
+  margin: 20vh;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  color: #686a6d;
+}
+
+#best-sellers {
+  margin: 20vh;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  color: #686a6d;
+}
+
+#rings {
+  margin: 20vh;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  color: #686a6d;
+}
+
+#necklaces {
+  margin: 20vh;
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  color: #686a6d;
+}
