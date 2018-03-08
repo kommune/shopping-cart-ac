@@ -17,7 +17,7 @@
 <div class="container ">
   <div class="row d-flex justify-content-center">
   <div class="col-md-7">
-    <%= form_for [:admin, @product] do |f| %>
+    <%= form_for @product, url: admin_products_path, method: :post do |f| %>
     <div class="card mt-5">
       <div class="card-header">
         <h4>New Product</h4>

@@ -11,7 +11,7 @@ class Admin::CreationsController < ApplicationController
     @product = Product.new(product_params)
     if @product.save
       flash[:notice] = "Product was successfully created"
-      redirect_to admin_categories_path
+      redirect_to admin_root_path
     else
       flash.now[:alert] = "Product creation was unsuccessful"
       render :new

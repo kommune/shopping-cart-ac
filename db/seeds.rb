@@ -25,5 +25,5 @@ CategoriesProduct.create!(product: Product.second, category: Category.third)
 CategoriesProduct.create!(product: Product.third, category: Category.third)
 CategoriesProduct.create!(product: Product.fourth, category: Category.third)
 CategoriesProduct.create!(product: Product.fifth, category: Category.third)
-CategoriesProduct.create!(product: Product.sixth, category: Category.third)
+CategoriesProduct.create!(product: Product.last, category: Category.third)
 puts "Category-Product association created!"
