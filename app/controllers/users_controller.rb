@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :cart]
 
   def home
+    @category = Category.find(params[:id])
   end
   
   def cart
