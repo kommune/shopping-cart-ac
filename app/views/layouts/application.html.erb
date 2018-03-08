@@ -25,15 +25,15 @@
             <div class="row">
               <div class="col-6 align-content-center">
                 <strong><p>Trending</p></strong>
-                <%= link_to 'New Arrivals', category_path(@category.id), {:class=>"dropdown-item"} %>
-                <%= link_to 'Bestsellers', category_path(@category.id), {:class=>"dropdown-item"} %>
+                <%= link_to 'New Arrivals', root_path, {:class=>"dropdown-item"} %>
+                <%= link_to 'Bestsellers', root_path, {:class=>"dropdown-item"} %>
               </div>
               <div class="col-6 align-content-center">
                 <strong><p>Categories</p></strong>
-                <a class="dropdown-item" href="#">Rings</a>
-                <a class="dropdown-item" href="#">Necklaces</a>
-                <a class="dropdown-item" href="#">Earrings</a>
-                <a class="dropdown-item" href="#">Bracelets</a>
+                <%= link_to 'Rings', root_path, {:class=>"dropdown-item"} %>
+                <%= link_to 'Necklaces', root_path, {:class=>"dropdown-item"} %>
+                <%= link_to 'Earrings', root_path, {:class=>"dropdown-item"} %>
+                <%= link_to 'Bracelets', root_path, {:class=>"dropdown-item"} %>
               </div>
             </div>
           </div>
@@ -45,9 +45,9 @@
           <div class="container d-flex justify-content-left">
             <div class="row">
               <div class="col-3 align-content-center">
-                <a class="dropdown-item" href="#">About Us</a>
-                <a class="dropdown-item" href="#">The Process</a>
-                <a class="dropdown-item" href="#">Materials & Care</a>
+                <%= link_to 'About us', aboutus_users_path, {:class=>"dropdown-item"} %>
+                <%= link_to 'The Process', theprocess_users_path, {:class=>"dropdown-item"} %>
+                <%= link_to 'Materials & Care', materialsandcare_users_path, {:class=>"dropdown-item"} %>
               </div>
             </div>
           </div>

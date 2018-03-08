@@ -17,4 +17,8 @@ class CategoriesController < ApplicationController
     params.require(:product).permit(:name, :price, :description, :filestack_url)
   end
 
+  def category_params
+    params.require(:category).permit(:name)
+  end
+
 end
