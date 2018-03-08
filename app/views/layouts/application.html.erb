@@ -10,10 +10,10 @@
   </head>
 
   <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
     <%= link_to 'BOBBY!', root_path, {:class=>"navbar-brand"} %>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+  <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -55,13 +55,62 @@
       </div>
     </ul>
   </div>
+
   <ul class="nav justify-content-end">
+  <li class="nav-item">
+  <div class="dropdown">
+    <button class="dropbtn">
+      <% if current_user %>
+      HI, <%= current_user.first_name.upcase %>!
+    </button>
+    <div class="dropdown-content">
+      <div class="container d-flex justify-content-end">
+        <div class="row">
+          <div class="col-12 align-content-center">
+            <strong><p>Account Setting</p></strong>
+            <%= link_to 'Edit Profile', edit_user_registration_path %>
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </li>
+  <li class="nav-item">
+    <button class="dropbtn">
+      <%= link_to 'CART', new_user_session_path %>
+    </button>
+  </li>
+  <% else %>
     <li class="nav-item">
-      <%= link_to 'SIGN IN', new_user_session_path, {:class=>"dropdown-item"} %>
+      <div class="dropdown">
+        <button class="dropbtn">REGISTER</button>
+        <div class="dropdown-content">
+          <div class="container d-flex justify-content-end">
+            <div class="row">
+              <div class="col-12 align-content-center">
+                <%= link_to 'Sign up here', new_user_registration_path %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </li>
     <li class="nav-item">
-      <%= link_to 'CART', new_user_session_path, {:class=>"dropdown-item"} %>
+      <div class="dropdown">
+        <button class="dropbtn">SIGN IN</button>
+        <div class="dropdown-content">
+          <div class="container d-flex justify-content-end">
+            <div class="row">
+              <div class="col-12 align-content-center">
+                <%= link_to 'Sign in here', new_user_session_path %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </li>
+  <% end %>
   </ul>
 </nav>
     <%= yield %>
