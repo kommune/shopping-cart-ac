@@ -25,7 +25,7 @@ Rails.application.routes.draw do
       resources :products, except: [:index, :new, :create]
     end
     resources :products, only: [:index]
-    resources :creation, only: [:new, :create]
+    resources :creations, only: [:new, :create]
   end
 
 end
