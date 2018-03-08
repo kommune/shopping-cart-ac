@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   
   resources :users do
     get 'home', on: :collection
+    get 'aboutus', on: :collection
+    get 'theprocess', on: :collection
+    get 'materialsandcare', on: :collection
     get 'cart', on: :member
     get 'payment', on: :member
   end
