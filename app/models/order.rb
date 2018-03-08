@@ -7,5 +7,8 @@ class Order < ApplicationRecord
   enum status: [:pending, :confirmed, :shipped]
 
   belongs_to :user
+  has_many :orders_products, dependent: :destroy
+  has_many :products, through: :orders_products
+  
   has_many :transactions, dependent: :destroy
 end

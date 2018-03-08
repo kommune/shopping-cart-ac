@@ -18,4 +18,9 @@
   <%= filestack_image @product.filestack_url, transform: filestack_transform.resize(width:100, height:100) %>
 </p>
 
+<p>
+  <strong>Categories</strong>
+  <%= @product.category_ids %>
+</p>
+
 <%= link_to 'Back', categories_path %>
