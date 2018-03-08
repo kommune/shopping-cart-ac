@@ -20,10 +20,10 @@ Category.create!(name: 4)
 Category.create!(name: 5)
 puts "4 categories created!"
 
-CategoriesProduct.create!(product: Product.first, category: Category.third)
-CategoriesProduct.create!(product: Product.second, category: Category.third)
-CategoriesProduct.create!(product: Product.third, category: Category.third)
-CategoriesProduct.create!(product: Product.fourth, category: Category.third)
+CategoriesProduct.create!(product: Product.first, category: Category.first)
+CategoriesProduct.create!(product: Product.second, category: Category.first)
+CategoriesProduct.create!(product: Product.third, category: Category.first)
+CategoriesProduct.create!(product: Product.fourth, category: Category.second)
 CategoriesProduct.create!(product: Product.fifth, category: Category.third)
 CategoriesProduct.create!(product: Product.last, category: Category.third)
 puts "Category-Product association created!"

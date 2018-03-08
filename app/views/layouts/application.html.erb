@@ -25,15 +25,15 @@
             <div class="row">
               <div class="col-6 align-content-center">
                 <strong><p>Trending</p></strong>
-                <%= link_to 'New Arrivals', root_path, {:class=>"dropdown-item"} %>
-                <%= link_to 'Bestsellers', root_path, {:class=>"dropdown-item"} %>
+                <%= link_to 'New Arrivals', categories_path(anchor: 'new-arrivals'), {:class=>"dropdown-item"} %>
+                <%= link_to 'Bestsellers', categories_path(anchor: 'best-sellers'), {:class=>"dropdown-item"} %>
               </div>
               <div class="col-6 align-content-center">
                 <strong><p>Categories</p></strong>
-                <%= link_to 'Rings', root_path, {:class=>"dropdown-item"} %>
-                <%= link_to 'Necklaces', root_path, {:class=>"dropdown-item"} %>
-                <%= link_to 'Earrings', root_path, {:class=>"dropdown-item"} %>
-                <%= link_to 'Bracelets', root_path, {:class=>"dropdown-item"} %>
+                <%= link_to 'Rings', category_path(3), {:class=>"dropdown-item"} %>
+                <%= link_to 'Necklaces', category_path(4), {:class=>"dropdown-item"} %>
+                <%= link_to 'Earrings', category_path(5), {:class=>"dropdown-item"} %>
+                <%= link_to 'Bracelets', category_path(6), {:class=>"dropdown-item"} %>
               </div>
             </div>
           </div>

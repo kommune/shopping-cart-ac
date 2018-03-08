@@ -1,24 +1,41 @@
 class CategoriesController < ApplicationController
 
-  before_action :authenticate_user!
+  before_action :set_category, only: [:show, :index]
+  before_action :set_product, only: [:index]
+  before_action :set_categoriesproduct, only: [:show, :index]
 
   def index
-    @categories = Category.all
+    
   end
 
   def show
-    @category = Category.find(params[:id])
-    @product = Product.find(params[:id])
+    @products = @category.products
   end
 
   private
 
-  def product_params
-    params.require(:product).permit(:name, :price, :description, :filestack_url)
+  def set_categoriesproduct
+    @categoriesproduct = CategoriesProduct.where(params[:id])
+  end
+  
+  def categoriesproduct_params
+    params.require(:category).permit(:category_id, :product_id)
+  end
+
+  def set_category
+    @category = Category.find(params[:id])
   end
 
   def category_params
     params.require(:category).permit(:name)
+  end
+
+  def set_product
+    @product = Product.where(params[:id])
+  end
+
+  def product_params
+    params.require(:product).permit(:name, :price, :description, :filestack_url)
   end
 
 end
