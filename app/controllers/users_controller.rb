@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def materialsandcare
-
+    
   end
   
   def cart
