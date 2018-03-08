@@ -1,10 +1,10 @@
-<div id="rings">
-  <div class="container all-rings">
+<div id="jewelry-types">
+  <div class="container types">
     <h5><%= @category.name.titleize %></h5>
     <div class="row">
       <% @products.each do |product| %>
         <div class="col-4 mt-4">
-          <div class="card rings-only" style="width: 18rem;">
+          <div class="card each-type" style="width: 18rem;">
             <%= image_tag product.filestack_url, class: "img-fluid mx-auto" %>
             <div class="card-body">
               <h5 class="card-title"><%= product.name %></h5>

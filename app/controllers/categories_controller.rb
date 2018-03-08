@@ -1,11 +1,10 @@
 class CategoriesController < ApplicationController
 
-  before_action :set_category, only: [:show, :index]
-  before_action :set_product, only: [:index]
+  before_action :set_category, only: [:show]
   before_action :set_categoriesproduct, only: [:show, :index]
 
   def index
-    
+  
   end
 
   def show

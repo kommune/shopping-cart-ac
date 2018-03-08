@@ -25,8 +25,8 @@
             <div class="row">
               <div class="col-6 align-content-center">
                 <strong><p>Trending</p></strong>
-                <%= link_to 'New Arrivals', categories_path(anchor: 'new-arrivals'), {:class=>"dropdown-item"} %>
-                <%= link_to 'Bestsellers', categories_path(anchor: 'best-sellers'), {:class=>"dropdown-item"} %>
+                <%= link_to 'New Arrivals', category_path(1), {:class=>"dropdown-item"} %>
+                <%= link_to 'Bestsellers', category_path(2), {:class=>"dropdown-item"} %>
               </div>
               <div class="col-6 align-content-center">
                 <strong><p>Categories</p></strong>
