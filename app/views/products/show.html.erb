@@ -1,4 +1,5 @@
-<div id="jewelry-types">
+
+<!-- <div id="jewelry-types">
   <div class="container types">
     <h5><%= @category.name.titleize %></h5>
   <div class="row">
@@ -16,12 +17,31 @@
       <br />
       <%= link_to 'Add To Cart', add_to_cart_product_path(@product), method: :put %></td>
       <% if ($redis.hget current_user.id, @product.id).to_i > 0 %>
-        <td><%= link_to 'Remove From Cart', remove_from_cart_product_path(@product), method: :put %></td>
+        <td><%= link_to 'Remove From Cart', remove_from_cart_product_path(@product), method: :put %></td> -->
+
+<div class="container-fluid d-flex justify-content-center show-products">
+  <div class="row">
+    <div class="col-8">
+      <div class="card">
+        <%= filestack_image @product.filestack_url, transform: filestack_transform.resize(width:100, height:100) %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-8">
+      <p><strong>Name: </strong><%= @product.name %></p>
+      <p><strong>Price: </strong><%= @product.price %></p>
+      <p><strong>Description: </strong><%= @product.description %></p>
+      <p><%= link_to 'Add To Cart', root_path, {:class=>"btn btn-outline-dark"} %></p>
+      <% if  0 %>
+      <p><%= link_to 'Remove From Cart', root_path, {:class=>"btn btn-outline-dark"} %></p>
+
       <% else %>
         <td></td>
       <% end %>
     </div>
   </div>
+
     <div class="row">
       <%= link_to 'Back', categories_path %>
     </div>

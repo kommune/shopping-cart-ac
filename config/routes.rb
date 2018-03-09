@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'payment', on: :member
     get '/cart', to: 'carts#show'
     resources :orders
+
   end
 
   root "users#home"
