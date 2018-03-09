@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     get 'theprocess', on: :collection
     get 'materialsandcare', on: :collection
     get 'payment', on: :member
-    resources :cart
+    resources :carts
   end
   root "users#home"
   
