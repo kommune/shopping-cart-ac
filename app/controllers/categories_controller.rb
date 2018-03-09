@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
 
+  before_action :authenticate_user!
   before_action :set_category, only: [:show]
   before_action :set_categoriesproduct, only: [:show, :index]
 
@@ -8,7 +9,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @products = @category.products
+    @products = @category.products.all
   end
 
   private

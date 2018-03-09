@@ -1,15 +1,18 @@
 class CartsController < ApplicationController
 
-  def index
-  end
+
+  before_action :authenticate_user!
 
   def show
+    @user = current_user
+    @cart = $redis.hgetall(current_user.id)
+    # @products = cart.keys
   end
 
-  def update
-  end
+  private
 
-  def destroy
+  def user_params
+    params.require(:user).permit(:first_name, :last_name, :email)
   end
-
+  
 end
