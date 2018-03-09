@@ -1,7 +1,7 @@
 Admin.create!(email: "admin@example.com", password: "123123")
 puts "Default admin created!"
 
-User.create!(first_name: "Sally", last_name: "Who", email:"sallywho@example.com", password: "123123", shipping_address: "Sample address", billing_address: "Sample address", contact_number: "123456")
+User.create!(first_name: "Sally", last_name: "Who", email:"sallywho@example.com", password: "123123")
 puts "1 user created!"
 
 Product.create!(name: "Stacker Ring", price: 69.00, description: "Solid Yellow Gold" )

@@ -33,13 +33,13 @@ ActiveRecord::Schema.define(version: 20180305093716) do
   end
 
   create_table "carts", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "item", null: false
     t.float "subtotal", null: false
     t.integer "quantity", default: 1, null: false
-    t.float "total", null: false
-    t.float "gst", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_carts_on_user_id", unique: true
   end
 
   create_table "categories", force: :cascade do |t|
@@ -60,14 +60,11 @@ ActiveRecord::Schema.define(version: 20180305093716) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "order_number", null: false
     t.string "ship_to", null: false
     t.float "order_total", null: false
-    t.string "view_order", null: false
-    t.integer "status", null: false
+    t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_number"], name: "index_orders_on_order_number", unique: true
   end
 
   create_table "orders_products", force: :cascade do |t|
@@ -75,7 +72,7 @@ ActiveRecord::Schema.define(version: 20180305093716) do
     t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id", "product_id"], name: "index_orders_products_on_order_id_and_product_id", unique: true
+    t.index ["order_id", "product_id"], name: "index_orders_products_on_order_id_and_product_id"
     t.index ["order_id"], name: "index_orders_products_on_order_id"
     t.index ["product_id"], name: "index_orders_products_on_product_id"
   end
@@ -100,9 +97,6 @@ ActiveRecord::Schema.define(version: 20180305093716) do
     t.string "last_name", default: "", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.string "shipping_address", default: "", null: false
-    t.string "billing_address", default: "", null: false
-    t.string "contact_number", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -117,6 +111,7 @@ ActiveRecord::Schema.define(version: 20180305093716) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "carts", "users"
   add_foreign_key "categories_products", "categories"
   add_foreign_key "categories_products", "products"
   add_foreign_key "orders_products", "orders"

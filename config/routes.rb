@@ -8,13 +8,19 @@ Rails.application.routes.draw do
     get 'theprocess', on: :collection
     get 'materialsandcare', on: :collection
     get 'payment', on: :member
-    resources :cart
+    get '/cart', to: 'carts#show'
+    resources :orders
   end
+
   root "users#home"
   
   resources :categories, only: [:index, :show] do
-    resources :products, only: [:index, :show] do
-    end
+    resources :products, only: [:index, :show]
+  end
+
+  resources :products, only: [] do
+    put 'add_to_cart', on: :member
+    put 'remove_from_cart', on: :member
   end
 
   namespace :admin do

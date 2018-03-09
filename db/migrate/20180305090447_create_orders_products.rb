@@ -5,6 +5,6 @@ class CreateOrdersProducts < ActiveRecord::Migration[5.1]
       t.references :product, foreign_key: true
       t.timestamps
     end
-    add_index :orders_products, [:order_id, :product_id], unique: true
+    add_index :orders_products, [:order_id, :product_id]
   end
 end
