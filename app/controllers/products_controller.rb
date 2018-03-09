@@ -1,7 +1,5 @@
 class ProductsController < ApplicationController
 
-  before_action :authenticate_user!, only: [:add_to_cart, :remove_from_cart]
-
   def index
     @products = Product.all
   end
