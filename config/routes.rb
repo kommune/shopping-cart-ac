@@ -2,20 +2,18 @@ Rails.application.routes.draw do
   devise_for :users, path: 'users', controllers: { sessions: "users/sessions" }
   devise_for :admins, path: 'admins', controllers: { sessions: "admins/sessions" }
   
-  resources :users do
+  resources :users do 
     get 'home', on: :collection
     get 'aboutus', on: :collection
     get 'theprocess', on: :collection
     get 'materialsandcare', on: :collection
-    get 'cart', on: :member
     get 'payment', on: :member
+    resources :cart
   end
   root "users#home"
   
   resources :categories, only: [:index, :show] do
     resources :products, only: [:index, :show] do
-      put "add_to_cart", on: :member
-      put "remove_from_cart", on: :member
     end
   end
 

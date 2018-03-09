@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :authenticate_user!, except: [:home, :aboutus, :theprocess, :materialsandcare]
-  before_action :set_user, only: [:show, :edit, :update, :cart]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def home
 
@@ -17,9 +17,6 @@ class UsersController < ApplicationController
 
   def materialsandcare
     
-  end
-  
-  def cart
   end
 
   def index
@@ -42,7 +39,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :shipping_address, :billing_address, :contact_number)
+    params.require(:user).permit(:first_name, :last_name, :email)
   end
 
   def set_user
