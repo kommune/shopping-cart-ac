@@ -1,0 +1,23 @@
+.container
+  .row
+    .col-md-12
+      h1 My Orders
+      br
+        table.table table-hover
+          thead
+            tr
+              th scope="col" Ship To
+              th scope="col" Total amount
+              th scope="col" Status
+          tbody
+            tr
+              td - @orders.each do |order|
+                h5.card-title = order.ship_to
+                p.card-text = order.order_total
+                p.card-text = order.status
+
+                = link_to 'View Order', user_order_path(current_user, order) , {:class=>"btn btn-secondary"}
+
+              td - if current_admin
+                = link_to 'Edit', edit_user_order_path(current_user, order)
+                = link_to 'Delete', user_order_path(current_user, order), method: :delete, data: {confirm:"Are you sure?"}

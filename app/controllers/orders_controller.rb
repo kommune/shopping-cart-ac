@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
-  before_action :authenticate_user!, except: [:update, :edit, :destroy]
-  before_action :authenticate_admin!
+  before_action :authenticate_admin!, only: [:update, :edit, :destroy]
+  before_action :authenticate_user!
 
   def index
     @orders = current_user.orders.all
