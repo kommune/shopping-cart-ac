@@ -9,38 +9,21 @@
             <th scope="col">Name of Items</th>
             <th scope="col">Quantity</th>
             <th scope="col">Sub-total</th>
-            <th scope="col">GST</th>
-            <th scope="col">Total</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
+          <% @cart.each do |product_id, quantity| %>
           <tr>
-            <td><% @products.each do |product| %></td>
-              <h5 class="card-title"><%= product.name %></h5>
-              <p class="card-text"><%= product.description %></p>
-              <p class="card-text"><%= product.price %></p>
-
-              <%= link_to 'View Product', product_path(product) , {:class=>"btn btn-secondary"} %>
-
-            </div>
-          </div>
-        </div>
-        <% end %>
-
-
-
-
-
-            <td>
-            <% if current_admin %>
-              <%= link_to 'Edit', edit_user_order_path(order) %>
-              <%= link_to 'Delete', user_order_path(order), method: :delete, data: {confirm:"Are you sure?"} %>
-            <% end %>
-            </td>
+            <% product = Product.find(product_id) %>
+            <td scope="row"><%= product.name %></td>
+            <td scope="row"><%= quantity %></td>
+            <td class="card-title"><%= product.price %></td>
+            <td class="card-title"><%= link_to 'Remove', remove_from_cart_path(product), method: :delete %></td>
+          <% end %>
           </tr>
         </tbody>
       </table>
-      
     </div>
   </div>
 </div>

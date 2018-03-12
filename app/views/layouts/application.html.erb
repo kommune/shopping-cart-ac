@@ -108,12 +108,14 @@
   <% end %>
     <li class="nav-item">
       <div class="dropdown">
-        <button class="dropbtn">CART</button>
+        <% if current_user %>
+        <button class="dropbtn">CART(<%= total_cart_quantity %>)</button>
         <div class="dropdown-content">
           <div class="container d-flex justify-content-end">
             <div class="row">
               <div class="col-12 align-content-center">
                 <%= link_to 'View Cart', cart_path %>
+        <% end %>
               </div>
             </div>
           </div>
