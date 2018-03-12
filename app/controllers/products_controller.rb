@@ -1,14 +1,12 @@
 class ProductsController < ApplicationController
 
-  before_action :authenticate_user!
-
   def index
     @products = Product.all
   end
 
   def show
     @product = Product.find(params[:id])
-    @category = @product.categories.find(params[:id])
+    @total_cart_quantity = total_cart_quantity
   end
 
   def add_to_cart
@@ -30,6 +28,8 @@ class ProductsController < ApplicationController
 
   private
 
-
+  def total_cart_quantity
+    $redis.hvals(current_user.id).map(&:to_i).reduce(:+)
+  end
 
 end
