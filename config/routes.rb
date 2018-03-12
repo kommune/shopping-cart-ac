@@ -23,6 +23,10 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show]
 
+  resources :orders do
+    get 'checkout', on: :collection
+  end
+
   namespace :admin do
     root "products#index"
     resources :categories do
