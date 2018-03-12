@@ -106,7 +106,6 @@
       </div>
     </li>
   <% end %>
-  <% if user_signed_in? %>
     <li class="nav-item">
       <div class="dropdown">
         <button class="dropbtn">CART</button>
@@ -114,16 +113,13 @@
           <div class="container d-flex justify-content-end">
             <div class="row">
               <div class="col-12 align-content-center">
-
-                <%= link_to 'View Cart', user_cart_path(current_user) %>
-
+                <%= link_to 'View Cart', root_path %>
               </div>
             </div>
           </div>
         </div>
       </div>
     </li>
-    <% end %>
   </ul>
 </nav>
     <%= yield %>
