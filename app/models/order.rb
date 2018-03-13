@@ -11,4 +11,9 @@ class Order < ApplicationRecord
   has_many :products, through: :orders_products
   
   has_many :transactions, dependent: :destroy
+
+  def address
+    "#{street_name}, #{unit_number}, #{city} #{postal_code}"
+  end
+
 end

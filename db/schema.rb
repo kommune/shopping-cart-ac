@@ -60,11 +60,17 @@ ActiveRecord::Schema.define(version: 20180305093716) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "ship_to", null: false
+    t.bigint "user_id"
+    t.string "street_name", null: false
+    t.string "unit_number"
+    t.string "city", null: false
+    t.string "postal_code", null: false
+    t.integer "contact_number", null: false
     t.float "order_total", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "orders_products", force: :cascade do |t|
@@ -114,6 +120,7 @@ ActiveRecord::Schema.define(version: 20180305093716) do
   add_foreign_key "carts", "users"
   add_foreign_key "categories_products", "categories"
   add_foreign_key "categories_products", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "orders_products", "orders"
   add_foreign_key "orders_products", "products"
 end
