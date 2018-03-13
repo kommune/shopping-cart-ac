@@ -1,9 +1,11 @@
 class Order < ApplicationRecord
 
-  validates :order_number, presence: true, uniqueness: true
-  validates :ship_to, presence: true
+  validates :street_name, presence: true
+  validates :city, presence: true
+  validates :postal_code, presence: true
+  validates :contact_number, presence: true
   validates :order_total, presence: true
-  validates :view_order, presence: true
+
   enum status: [:pending, :confirmed, :shipped]
 
   belongs_to :user
@@ -12,7 +14,7 @@ class Order < ApplicationRecord
   
   has_many :transactions, dependent: :destroy
 
-  def address
+  def ship_to
     "#{street_name}, #{unit_number}, #{city} #{postal_code}"
   end
 

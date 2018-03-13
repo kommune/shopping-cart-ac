@@ -64,9 +64,9 @@ ActiveRecord::Schema.define(version: 20180305093716) do
     t.string "street_name", null: false
     t.string "unit_number"
     t.string "city", null: false
-    t.string "postal_code", null: false
-    t.integer "contact_number", null: false
-    t.float "order_total", null: false
+    t.bigint "postal_code", null: false
+    t.bigint "contact_number", null: false
+    t.integer "order_total", null: false
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
