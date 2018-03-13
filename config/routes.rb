@@ -7,12 +7,15 @@ Rails.application.routes.draw do
     get 'aboutus', on: :collection
     get 'theprocess', on: :collection
     get 'materialsandcare', on: :collection
-    get 'payment', on: :member
     resources :orders
 
   end
 
   root "users#home"
+  
+  get 'transactions/new'
+
+  post 'transactions/create'
   
   resource :cart, only: [:show]
 

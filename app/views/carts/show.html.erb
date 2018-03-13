@@ -18,12 +18,13 @@
             <% product = Product.find(product_id) %>
             <td scope="row"><%= product.name %></td>
             <td scope="row"><%= quantity %></td>
-            <td class="card-title"><%= product.price %></td>
-            <td class="card-title"><%= link_to 'Remove', remove_from_cart_path(product), method: :delete %></td>
+            <td scope="row"><%= product.price %></td>
+            <td scope="row"><%= link_to 'Remove', remove_from_cart_path(product), method: :delete %></td>
           <% end %>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+    <%= link_to 'Checkout', transactions_new_path %>
 </div>
