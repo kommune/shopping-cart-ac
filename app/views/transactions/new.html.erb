@@ -5,7 +5,7 @@
         <%= form_tag transactions_create_path do%>
           <p>Please enter your payment details:</p>
           <div id="dropin"></div>
-          <%= submit_tag "Pay #{current_user.cart_total_price}$" %>
+          <%= submit_tag "Pay #{current_user.total_cart_value}$" %>
         <%end%>
     </div>
   </div>
