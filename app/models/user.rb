@@ -13,6 +13,15 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def total_cart_value 
+    total_price = 0
+    $redis.hgetall(id).each do |product_id, qty|
+      product = Product.find(product_id)  
+      total_price += product.price * qty.to_i
+    end
+    total_price
+  end
   
   def current_cart
     $redis.smembers "cart#{self.id}"
