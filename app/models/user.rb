@@ -39,12 +39,6 @@ class User < ApplicationRecord
   def purchase?(product)
     products.include?(product)
   end
-  
-  def cart_total_price
-    total_price = 0
-    get_cart_products.each { |product| total_price+= product.price }
-    total_price
-  end
 
   def get_cart_products
     cart_ids = $redis.hkeys id

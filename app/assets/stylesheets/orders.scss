@@ -1,17 +1,5 @@
-// Place all the styles related to the Orders controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-.row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Lato', sans-serif;
-  color: #686a6d;
-}
-
-.order-cart-items {
-  margin: 20vh;
+.container.order-cart-items {
+  margin-top: 20vh;
   font-family: 'Lato', sans-serif;
   text-align: center;
   color: #686a6d;

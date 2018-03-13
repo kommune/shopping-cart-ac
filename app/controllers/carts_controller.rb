@@ -15,14 +15,14 @@ class CartsController < ApplicationController
 
   def remove
     @product = Product.find(params[:product_id])
-    if $redis.hget current_user.id, params[:product_id] == 1
+    if ($redis.hget current_user.id, params[:product_id]).to_i <= 1
       $redis.hdel current_user.id, params[:product_id]
     else
     $redis.hincrby current_user.id, params[:product_id], -1
     end
     @count = $redis.hget current_user.id, params[:product_id]
     flash.now[:alert] = "Product removed from cart"
-    redirect_to product_path(@product)
+    redirect_to cart_path
   end
 
   private
