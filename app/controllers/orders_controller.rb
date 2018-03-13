@@ -1,6 +1,5 @@
 class OrdersController < ApplicationController
 
-  before_action :authenticate_admin!, only: [:update, :edit, :destroy]
   before_action :authenticate_user!
 
   def index
@@ -19,28 +18,6 @@ class OrdersController < ApplicationController
   def create
     @order = current_user.orders.create(order_params)
     redirect_to transactions_new_path
-  end
-
-  def update
-    @order = current_user.orders.find(params[:id])
-    if @order.update(order_params)
-      flash[:notice] = "Order was successfully updated"
-      redirect_to user_orders_path
-    else
-      flash.now[:alert] = "Order update was unsuccessful"
-      render :edit
-    end
-  end
-
-  def edit
-    @order = current_user.orders.find(params[:id])
-  end
-
-  def destroy
-    @order = current_user.orders.find(params[:id])
-    @order.destroy
-    flash[:alert] = "Order was deleted"
-    redirect_to user_orders_path
   end
 
   def pending
