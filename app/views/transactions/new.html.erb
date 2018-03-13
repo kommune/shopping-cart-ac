@@ -1,0 +1,12 @@
+<div class="container transactions">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Payment</h2>
+        <%= form_tag transactions_create_path do%>
+          <p>Please enter your payment details:</p>
+          <div id="dropin"></div>
+          <%= submit_tag "Pay #{current_user.cart_total_price}$" %>
+        <%end%>
+    </div>
+  </div>
+</div>
