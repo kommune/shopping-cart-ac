@@ -27,18 +27,19 @@ class User < ApplicationRecord
     $redis.smembers "cart#{self.id}"
   end
 
-  def purchase_cart_products!
-    get_cart_products.each { |product| purchase(product) }
-    $redis.del "cart#{id}"
+  def purchase_cart_products!(order)
+    get_cart_products.each { |product| order.products << product }
+    $redis.del id
+    transaction = order.transactions.create(status: "successful")
   end
 
-  def purchase(product)
-    products << product unless purchase?(product)
-  end
+  # def purchase(product)
+  #   products << order unless purchase?(product)
+  # end
 
-  def purchase?(product)
-    products.include?(product)
-  end
+  # def purchase?(product)
+  #   products.include?(product)
+  # end
 
   def get_cart_products
     cart_ids = $redis.hkeys id
