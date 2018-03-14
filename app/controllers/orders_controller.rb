@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @orders = current_user.orders.all
+    @order = current_user.orders.find(params[:id])
   end
 
   def show
@@ -16,8 +16,13 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = current_user.orders.create(order_params)
-    redirect_to transactions_new_path
+    @order = current_user.orders.build(order_params)
+    if @order.save
+      redirect_to new_order_transaction_path(@order)
+    else
+      @cart = $redis.hgetall(current_user.id)
+      render :checkout
+    end
   end
 
   def pending

@@ -13,10 +13,6 @@ Rails.application.routes.draw do
 
   root "users#home"
   
-  get 'transactions/new'
-
-  post 'transactions/create'
-  
   resource :cart, only: [:show]
 
   post 'cart/:product_id', to: 'carts#add', as: 'add_to_cart'
@@ -26,8 +22,9 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show]
 
-  resources :orders do
+  resources :orders, only: [:show] do
     get 'checkout', on: :collection
+    resources :transactions, only: [:new, :create], on: :member
   end
 
   namespace :admin do
