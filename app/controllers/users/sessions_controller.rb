@@ -31,6 +31,7 @@ class Users::SessionsController < Devise::SessionsController
 
   def set_redis
     session['cart'].each { |product_id| $redis.hmset current_user.id, product_id }
+    session['cart'].each { |product_id| $redis.hincrby current_user.id, product_id, 1 }
   end
 
 end
