@@ -4,8 +4,8 @@ class ProductsController < ApplicationController
     if current_user
       @cart = $redis.hgetall current_user.id
     else
-      session['cart'] ||= []
-      @cart = session['cart']
+      session[:cart] ||= {}
+      @cart = session[:cart]
     end
     @products = Product.all
   end

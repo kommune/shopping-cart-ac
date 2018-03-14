@@ -2,9 +2,9 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  before_action :set_redis, only: [:create]
   include Accessible
   skip_before_action :check_user, only: :destroy
-  after_action :set_redis, only: [:create]
   # GET /resource/sign_in
   # def new
   #   super
@@ -30,8 +30,7 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def set_redis
-    session['cart'].each { |product_id| $redis.hmset current_user.id, product_id }
-    session['cart'].each { |product_id| $redis.hincrby current_user.id, product_id, 1 }
+    session[:cart].each { |product_id, qty| $redis.hincrby current_user.id, product_id, qty }
   end
 
 end

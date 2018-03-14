@@ -5,9 +5,7 @@ class CartsController < ApplicationController
       @user = current_user
       @cart = $redis.hgetall(current_user.id)
     else 
-      @cart = Hash.new
-      session['cart']
-
+      @cart = session[:cart]
     end
   end
 
@@ -17,9 +15,11 @@ class CartsController < ApplicationController
       $redis.hincrby current_user.id, params[:product_id], 1
       @count = $redis.hget current_user.id, params[:product_id]
     else
-      session['cart'] ||= {}
-      session['cart'] << params[:product_id]
-      @count = session['cart'].length
+      session[:cart] ||= {}
+      session[:cart][params[:product_id]] ||= 0
+      session[:cart][params[:product_id]] += 1
+      @count = 0
+      session[:cart].each {|product_ids, qty| @count += qty }
     end
     flash[:notice] = "Product added to cart!"
     redirect_to product_path(@product)
@@ -35,8 +35,13 @@ class CartsController < ApplicationController
       end
       @count = $redis.hget current_user.id, params[:product_id]
     else
-      session['cart'].delete(params[:product_id]) if session['cart']
-      @count = session['cart'].length
+      if session[:cart][params[:product_id]] <= 1
+        session[:cart].delete(params[:product_id])
+      else
+        session[:cart][params[:product_id]] -= 1
+      end
+      @count = 0
+      session[:cart].each {|product_ids, qty| @count += qty }
     end
     flash.now[:alert] = "Product removed from cart"
     redirect_to cart_path
