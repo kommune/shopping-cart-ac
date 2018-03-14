@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = current_user.orders.find(params[:id])
+    @products = @order.products.all
   end
 
   def checkout # or display new order
