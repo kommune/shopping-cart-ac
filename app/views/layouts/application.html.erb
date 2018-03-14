@@ -73,6 +73,7 @@
         <div class="row">
           <div class="col-12 align-content-center">
             <strong><p>Account Setting</p></strong>
+            <%= link_to 'View Order History', user_orders_path %>
             <%= link_to 'Edit Profile', edit_user_registration_path %>
             <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
           </div>
