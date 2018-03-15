@@ -7,6 +7,7 @@ class CreateOrders < ActiveRecord::Migration[5.1]
       t.string :city, null: false
       t.bigint :postal_code, null: false
       t.bigint :contact_number, null: false
+      t.integer :quantity
       t.integer :order_total, null: false
       t.integer :status, default: 0, null: false
       t.timestamps
