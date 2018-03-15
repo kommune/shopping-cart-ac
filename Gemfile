@@ -34,6 +34,7 @@ gem 'redis', '~> 4.0'
 gem 'braintree'
 gem 'gon'
 gem 'sidekiq'
+gem 'omniauth-google-oauth2'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
