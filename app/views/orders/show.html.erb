@@ -1,7 +1,7 @@
 <div class="container show-order">
   <div class="row">
     <div class="col-md-12">
-      <h1>Orders</h1>
+      <h1>Order Details</h1>
       <h4>Thank you for shopping with us!</h4>
       <br>
       <table class="table table-hover">
@@ -22,7 +22,7 @@
             <td><%= product.name %></td>
             <td><%= product.description %></td>
             <td><%= @order.quantity %></td>
-            <td><%= product.price %></td>
+            <td>$<%= product.price * @order.quantity %></td>
             <td></td>
             </tr>
           <% end %>
@@ -30,4 +30,5 @@
       </table>
     </div>
   </div>
+  <p><%= link_to 'Back', user_orders_path(current_user), class: "btn btn-outline-dark" %></p>
 </div>

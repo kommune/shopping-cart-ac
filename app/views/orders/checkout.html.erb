@@ -1,9 +1,9 @@
+<%= form_for @order, url: user_orders_path(current_user), method: :post do |f| %>
+
 <div class="container d-flex justify-content-center order-cart-items">
   <div class="row">
     <h1>Checkout</h1>
     <br>
-    <%= form_for @order, url: user_orders_path(current_user), method: :post do |f| %>
-
     <div class="col-md-4">
       <div class="field">
         <%= f.label :street_name %><br />
@@ -30,8 +30,8 @@
         <%= f.number_field :contact_number %>
       </div>
     </div>
-
-    <div class="col-md-4 items">
+    
+    <div class="col-md-4">
       <table class="table table-hover">
         <thead>
           <tr>
@@ -46,7 +46,7 @@
             <% product = Product.find(product_id) %>
               <td scope="row"><%= product.name %></td>
               <td scope="row"><%= f.number_field :quantity, readonly: true, value: Integer(quantity) %></td>
-              <td class="card-title"><%= product.price %></td>
+              <td class="card-title"><%= product.price * Integer(quantity) %></td>
             <% end %>
           </tr>
         </tbody>
@@ -57,9 +57,9 @@
       </div>
       <br>
       <div class="actions">
-        <%= f.submit "Submit Order" %>
+        <%= f.submit "Submit Order", class: "btn btn-outline-dark" %>
       </div>
     </div>
-  <% end %>
-</div>
+<% end %>
+  </div>
 </div>

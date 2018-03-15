@@ -14,14 +14,18 @@
           </tr>
         </thead>
         <tbody>
-          <% @cart.each do |product_id, quantity| %>
-          <tr>
-            <% product = Product.find(product_id) %>
-            <td scope="row"><%= product.name %></td>
-            <td scope="row"><%= product.description %></td>
-            <td scope="row"><%= quantity %></td>
-            <td scope="row"><%= product.price %></td>
-            <td scope="row"><%= link_to 'Remove', remove_from_cart_path(product), method: :delete %></td>
+          <% if @cart.empty? %>
+            <td scope="row">Your shopping cart is empty!</td>
+            <% else %>
+            <% @cart.each do |product_id, quantity| %>
+            <tr>
+              <% product = Product.find(product_id) %>
+              <td scope="row"><%= product.name %></td>
+              <td scope="row"><%= product.description %></td>
+              <td scope="row"><%= quantity %></td>
+              <td scope="row"><%= product.price * Integer(quantity) %></td>
+              <td scope="row"><%= link_to 'Remove', remove_from_cart_path(product), method: :delete %></td>
+            <% end %>
           <% end %>
           </tr>
         </tbody>
