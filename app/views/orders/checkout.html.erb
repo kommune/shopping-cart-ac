@@ -4,62 +4,62 @@
     <br>
     <%= form_for @order, url: user_orders_path(current_user), method: :post do |f| %>
 
-      <div class="col-md-4">
-        <div class="field">
-          <%= f.label :street_name %><br />
-          <%= f.text_field :street_name %>
-        </div>
-
-        <div class="field">
-          <%= f.label :unit_number %><br />
-          <%= f.text_field :unit_number %>
-        </div>
-
-        <div class="field">
-          <%= f.label :city %><br />
-          <%= f.text_field :city %>
-        </div>
-
-        <div class="field">
-          <%= f.label :postal_code %><br />
-          <%= f.number_field :postal_code %>
-        </div>
-
-        <div class="field">
-          <%= f.label :contact_number %><br />
-          <%= f.number_field :contact_number %>
-        </div>
+    <div class="col-md-4">
+      <div class="field">
+        <%= f.label :street_name %><br />
+        <%= f.text_field :street_name %>
       </div>
 
-      <div class="col-md-8 items">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th scope="col">Name of Items</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Sub-total</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @cart.each do |product_id, quantity| %>
-            <tr>
-              <% product = Product.find(product_id) %>
-                <td scope="row"><%= product.name %></td>
-                <td scope="row"><%= quantity %></td>
-                <td class="card-title"><%= product.price %></td>
-              <% end %>
-            </tr>
-          </tbody>
-        </table>
-        <div class="field">
-          <%= f.label :order_total %><br />
-          <%= f.number_field :order_total, readonly: true, value: current_user.total_cart_value %>
-        </div>
-        
-        <div class="actions">
-          <%= f.submit "Submit Order" %>
-        </div>
+      <div class="field">
+        <%= f.label :unit_number %><br />
+        <%= f.text_field :unit_number %>
       </div>
-    <% end %>
-  </div>
+
+      <div class="field">
+        <%= f.label :city %><br />
+        <%= f.text_field :city %>
+      </div>
+
+      <div class="field">
+        <%= f.label :postal_code %><br />
+        <%= f.number_field :postal_code %>
+      </div>
+
+      <div class="field">
+        <%= f.label :contact_number %><br />
+        <%= f.number_field :contact_number %>
+      </div>
+    </div>
+
+    <div class="col-md-4 items">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Name of Items</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Sub-total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart.each do |product_id, quantity| %>
+          <tr>
+            <% product = Product.find(product_id) %>
+              <td scope="row"><%= product.name %></td>
+              <td scope="row"><%= quantity %></td>
+              <td class="card-title"><%= product.price %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <div class="field">
+        <%= f.label :order_total %><br />
+        <%= f.number_field :order_total, readonly: true, value: current_user.total_cart_value %>
+      </div>
+      <br>
+      <div class="actions">
+        <%= f.submit "Submit Order" %>
+      </div>
+    </div>
+  <% end %>
+</div>
 </div>
