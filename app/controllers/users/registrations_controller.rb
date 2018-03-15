@@ -3,11 +3,12 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  before_action :set_redis, only: [:new]
   include Accessible
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource
   # def create
@@ -59,4 +60,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+
+  def set_redis
+    session[:cart].each { |product_id, qty| $redis.hincrby current_user.id, product_id, qty }
+  end
 end
