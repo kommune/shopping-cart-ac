@@ -8,6 +8,7 @@
           <tr>
             <th scope="col">Order Number</th>
             <th scope="col">Ship To</th>
+            <th scope="col">Contact Number</th>
             <th scope="col">Total Amount</th>
             <th scope="col">Status</th>
             <th scope="col">Actions</th>
@@ -18,10 +19,13 @@
           <tr>
             <td><%= order.id %></td>
             <td><%= order.ship_to %></td>
+            <td><%= order.contact_number %></td>
             <td><%= order.order_total %></td>
             <td><%= order.status %></td>
-            <td><%= link_to "View Order", user_order_path(current_user, order) %></td>
             <td>
+              <%= link_to 'Show', admin_order_path(order) %>
+              <%= link_to 'Edit', edit_admin_order_path(order) %>
+              <%= link_to 'Delete', admin_order_path(order), method: :delete, data: {confirm:"Are you sure?"} %>
             </td>
           </tr>
           <% end %>
