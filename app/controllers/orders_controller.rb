@@ -5,15 +5,16 @@ class OrdersController < ApplicationController
   def index
     @orders = current_user.orders.all
   end
+  
+  def checkout # or display new order
+    @cart = $redis.hgetall(current_user.id)
+    @order = current_user.orders.new
+  end
 
   def show
     @order = current_user.orders.find(params[:id])
     @products = @order.products.all
-  end
-
-  def checkout # or display new order
-    @cart = $redis.hgetall(current_user.id)
-    @order = current_user.orders.new
+    @count = @products.count
   end
 
   def create

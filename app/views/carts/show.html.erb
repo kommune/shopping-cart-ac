@@ -1,4 +1,4 @@
-<div class="container cart">
+<div class="container d-flex justify-content-center cart">
   <div class="row">
     <div class="col-md-12">
       <h1>My Shopping Cart</h1>
@@ -6,7 +6,8 @@
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">Name of Items</th>
+            <th scope="col">Name of Item</th>
+            <th scope="col">Item Description</th>
             <th scope="col">Quantity</th>
             <th scope="col">Sub-total</th>
             <th scope="col">Actions</th>
@@ -17,6 +18,7 @@
           <tr>
             <% product = Product.find(product_id) %>
             <td scope="row"><%= product.name %></td>
+            <td scope="row"><%= product.description %></td>
             <td scope="row"><%= quantity %></td>
             <td scope="row"><%= product.price %></td>
             <td scope="row"><%= link_to 'Remove', remove_from_cart_path(product), method: :delete %></td>
@@ -25,8 +27,12 @@
         </tbody>
       </table>
     </div>
-    <div class="row">
-      <%= link_to 'Checkout Items', checkout_orders_path%>
+    <div class="container d-flex justify-content-center cart">
+      <div class="row">
+        <div class="col-md-12">
+          <%= link_to 'Checkout Items', checkout_orders_path, class: "btn btn-outline-dark" %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
