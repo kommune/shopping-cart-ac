@@ -45,7 +45,7 @@
           <tr>
             <% product = Product.find(product_id) %>
               <td scope="row"><%= product.name %></td>
-              <td scope="row"><%= quantity %></td>
+              <td scope="row"><%= f.number_field :quantity, readonly: true, value: Integer(quantity) %></td>
               <td class="card-title"><%= product.price %></td>
             <% end %>
           </tr>

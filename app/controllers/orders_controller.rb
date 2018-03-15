@@ -14,7 +14,6 @@ class OrdersController < ApplicationController
   def show
     @order = current_user.orders.find(params[:id])
     @products = @order.products.all
-    @count = @products.count
   end
 
   def create
@@ -46,7 +45,7 @@ class OrdersController < ApplicationController
   end
   
   def order_params
-    params.require(:order).permit(:street_name, :unit_number, :city, :postal_code, :contact_number, :order_total, :status)
+    params.require(:order).permit(:street_name, :unit_number, :city, :postal_code, :contact_number, :order_total, :quantity, :status)
   end
 
 end
