@@ -1,0 +1,57 @@
+<% if @order.errors.any? %>
+  <div class="container ">
+    <div class="row d-flex justify-content-center">
+      <div class="alert alert-info col-md-6" role="alert">
+        <h4>We have some errors here !</h4>
+          <ul>
+            <% @order.errors.full_messages.each do |msg| %>
+              <li class="mb-0"><%= msg %></li>
+            <% end %>
+          </ul>
+        <hr>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div class="container ">
+  <div class="row d-flex justify-content-center">
+    <h4>Edit Order</h4>
+    <%= form_for @order, :url => url_for(:controller => 'orders', :action => 'update') do |f| %>
+      <div class="form-group">
+        <div class="form-group">
+        <%= f.label :street_name, "Street Name" %>
+        <%= f.text_field :street_name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :unit_number, "Unit Number" %>
+        <%= f.text_field :unit_number, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :city, "City" %>
+        <%= f.text_field :city, class: "form-control" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :postal_code, "Postal Code" %>
+        <%= f.number_field :postal_code, class: "form-control" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :contact_number, "Contact Number" %>
+        <%= f.number_field :contact_number, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :status, "Status" %>
+        <%=  f.collection_radio_buttons :status, Order.statuses.keys.map { |e| [e.humanize, e] }, :last, :first %> 
+      </div>
+
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div

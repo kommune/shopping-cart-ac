@@ -5,15 +5,16 @@ class Admin::OrdersController < ApplicationController
   before_action :authenticate_admin!
 
   def index
-    @orders = current_user.orders.all
+    @orders = Order.all
   end
 
   def show
-    @order = current_user.orders.find(params[:id])
+    @order = Order.find(params[:id])
+    @products = @order.products.all
   end
 
   def update
-    @order = current_user.orders.find(params[:id])
+    @order = Order.find(params[:id])
     if @order.update(order_params)
       flash[:notice] = "Order was successfully updated"
       redirect_to admin_orders_path
@@ -24,14 +25,20 @@ class Admin::OrdersController < ApplicationController
   end
 
   def edit
-    @order = current_user.orders.find(params[:id])
+    @order = Order.find(params[:id])
   end
 
   def destroy
-    @order = current_user.orders.find(params[:id])
+    @order = Order.find(params[:id])
     @order.destroy
     flash[:alert] = "Order was deleted"
     redirect_to admin_orders_path
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:street_name, :unit_number, :city, :postal_code, :contact_number, :order_total, :quantity, :status)
   end
 
 end
