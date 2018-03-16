@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-8">
       <div class="card">
-        <%= filestack_image @product.filestack_url, transform: filestack_transform.resize(width:100, height:100) %>
+        <%= image_tag @product.product_image.url, size: '250x250' %>
       </div>
     </div>
   </div>

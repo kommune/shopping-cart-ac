@@ -19,6 +19,7 @@
         <tbody>
           <% @products.each do |product|%>
           <tr>
+            <td><%= image_tag product.product_image.url, size: '50x50' %></td>
             <td><%= product.name %></td>
             <td><%= product.description %></td>
             <td><%= @order.quantity %></td>

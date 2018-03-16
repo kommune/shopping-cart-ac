@@ -88,7 +88,7 @@ ActiveRecord::Schema.define(version: 20180315045838) do
     t.string "name", null: false
     t.float "price", null: false
     t.text "description"
-    t.string "filestack_url", default: ""
+    t.string "product_image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

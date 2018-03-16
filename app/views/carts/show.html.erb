@@ -6,6 +6,7 @@
       <table class="table table-hover">
         <thead>
           <tr>
+            <th scope="col"></th>
             <th scope="col">Name of Item</th>
             <th scope="col">Item Description</th>
             <th scope="col">Quantity</th>
@@ -20,6 +21,7 @@
             <% @cart.each do |product_id, quantity| %>
             <tr>
               <% product = Product.find(product_id) %>
+              <td scope="row"><%= image_tag product.product_image.url, size: '50x50' %></td>
               <td scope="row"><%= product.name %></td>
               <td scope="row"><%= product.description %></td>
               <td scope="row"><%= quantity %></td>
