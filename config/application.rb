@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require 'carrierwave/orm/activerecord'
+
 module ShoppingCartAc
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -14,6 +16,6 @@ module ShoppingCartAc
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    config.filestack_rails.api_key = ENV['FILESTACK_API_KEY']
+    config.generators.system_tests = nil
   end
 end

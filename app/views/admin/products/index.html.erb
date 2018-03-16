@@ -22,7 +22,7 @@
             <td><%= product.name %></td>
             <td><%= product.price %></td>
             <td><%= product.description %></td>
-            <td><%= filestack_image product.filestack_url, transform: filestack_transform.resize(width:100, height:100) %></td>
+            <td><%= image_tag product.product_image, size: '100x100' %></td>
             <td>
               <%= link_to 'Show', admin_category_product_path(product.categories, product) %>
               <%= link_to 'Edit', edit_admin_category_product_path(product.categories, product) %>

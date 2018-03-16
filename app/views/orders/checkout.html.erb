@@ -35,6 +35,7 @@
       <table class="table table-hover">
         <thead>
           <tr>
+            <th scope="col"></th>
             <th scope="col">Name of Items</th>
             <th scope="col">Quantity</th>
             <th scope="col">Sub-total</th>
@@ -44,6 +45,7 @@
           <% @cart.each do |product_id, quantity| %>
           <tr>
             <% product = Product.find(product_id) %>
+              <td scope="row"><%= image_tag product.product_image.url, , size: '50x50' %></td>
               <td scope="row"><%= product.name %></td>
               <td scope="row"><%= f.number_field :quantity, readonly: true, value: Integer(quantity) %></td>
               <td class="card-title"><%= product.price * Integer(quantity) %></td>
