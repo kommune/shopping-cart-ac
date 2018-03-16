@@ -17,5 +17,11 @@ module ShoppingCartAc
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.generators.system_tests = nil
+    
+    config.middleware.use OmniAuth::Builder do
+      provider :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET']
+    
+      OmniAuth.config.full_host = Rails.env.production? ? 'https://domain.com' : 'http://localhost:3000'
+    end
   end
 end
